@@ -1,6 +1,9 @@
 [package]
 name = "fast-git-prompt"
 version = "0.1.0"
+description = "A fast git prompt for zsh and bash."
+license = "MIT"
+repository = "https://github.com/MasterGordon/fast-git-prompt"
 edition = "2021"
 
 [dependencies]
