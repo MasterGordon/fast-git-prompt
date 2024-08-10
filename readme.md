@@ -24,7 +24,7 @@ The configuration of the prompt is fully modular and customizable.
 
 ### Example
 
-````json
+```json
 {
   "version-do-not-modify": "0.1.0",
   "schema": "$XDG_CONFIG_HOME/fast-git-prompt/schema.json",
@@ -33,6 +33,7 @@ The configuration of the prompt is fully modular and customizable.
     // Your prompt parts go here
   ]
 }
+```
 
 ### Prompt Parts
 
@@ -45,7 +46,7 @@ The branch name is the name of the current branch.
   "type": "branchName",
   "color": "white" // Optional
 }
-````
+```
 
 #### Origin Icon
 
