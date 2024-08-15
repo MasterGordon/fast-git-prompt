@@ -11,10 +11,15 @@ pub struct BranchName {
 
 impl RenderablePromptPart for BranchName {
     fn render(self, repo: &Repository) -> Option<String> {
-        let head = match repo.head() {
+        let head_o = match repo.head() {
             Ok(r) => Some(r),
             Err(_) => None,
-        }?;
+        };
+        if head_o.is_none() {
+            return Some("HEADLESS".to_string());
+        }
+        let head = head_o?;
+
         let name = head.name()?;
         let last = name.split('/').last()?;
         let head_commit = head.peel_to_commit().unwrap();

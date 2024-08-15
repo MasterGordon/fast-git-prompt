@@ -14,8 +14,10 @@ impl RenderablePromptPart for BranchSync {
     fn render(self, repo: &Repository) -> Option<String> {
         let head = repo.head().ok()?;
         let head_oid = head.target()?;
+        let name = head.name()?;
+        let last = name.split('/').last()?;
         let remote = repo
-            .find_branch("origin/main", git2::BranchType::Remote)
+            .find_branch(&format!("origin/{}", last), git2::BranchType::Remote)
             .ok()?;
         let remote_oid = remote.get().target()?;
         let (ahead, behind) = repo.graph_ahead_behind(head_oid, remote_oid).ok()?;
