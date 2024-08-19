@@ -37,6 +37,8 @@ The configuration of the prompt is fully modular and customizable.
 
 ### Prompt Parts
 
+The color property of every icon is optional.
+
 #### Branch Name
 
 The branch name is the name of the current branch.
@@ -67,7 +69,7 @@ The origin icon is the icon of the current branch's remote.
   },
   "defaultIcon": {
     "icon": "",
-    "color": "orange"
+    "color": "white"
   }
 }
 ```
