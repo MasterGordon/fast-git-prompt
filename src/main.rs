@@ -136,8 +136,9 @@ fn main() {
     prompt = prompt.drain(..).filter(|s| !s.is_empty()).collect();
 
     print!(
-        "{}{}",
+        "{}{}{}",
         color(config.base_color),
-        prompt.join(format!("{} ", color(config.base_color)).as_str())
+        prompt.join(format!("{} ", color(config.base_color)).as_str()),
+        color(Some(Color::Reset))
     );
 }

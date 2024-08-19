@@ -20,6 +20,7 @@ pub enum Color {
     BrightMagenta,
     BrightCyan,
     BrightWhite,
+    Reset,
 }
 
 const ESC: &str = "\x1b";
@@ -54,6 +55,7 @@ impl Ansi for Color {
             Color::BrightMagenta => format!("{}[95m", ESC),
             Color::BrightCyan => format!("{}[96m", ESC),
             Color::BrightWhite => format!("{}[97m", ESC),
+            Color::Reset => format!("{}[0m", ESC),
         }
     }
 }
