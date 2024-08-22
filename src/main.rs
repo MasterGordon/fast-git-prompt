@@ -36,6 +36,7 @@ struct Config {
     schema: Option<String>,
     #[serde(rename = "version-do-not-modify")]
     version: Option<String>,
+    reset: Option<bool>,
     base_color: Option<Color>,
     prompt: Vec<PromptPart>,
 }
@@ -80,6 +81,7 @@ fn setup() {
             version: Some(VERSION.to_string()),
             schema: Some(format!("{}/schema.json", config_dir)),
             base_color: None,
+            reset: Some(true),
             prompt: vec![],
         };
         write_config(config);
@@ -134,11 +136,15 @@ fn main() {
         }
     }
     prompt = prompt.drain(..).filter(|s| !s.is_empty()).collect();
+    let reset = match config.reset.unwrap_or(true) {
+        true => color(Some(Color::Reset)),
+        false => "".to_string(),
+    };
 
     print!(
         "{}{}{}",
         color(config.base_color),
         prompt.join(format!("{} ", color(config.base_color)).as_str()),
-        color(Some(Color::Reset))
+        reset
     );
 }
